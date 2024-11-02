@@ -1,328 +1,698 @@
-<html><head><base href="https://www3.animeflv.net/uploads/animes/covers/3928.jpg">  
-<title>QuakLTV - Solo Leveling</title>
-<style>
+<html><head><base href="." /><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>QuarkLTV - Tu Plataforma de Streaming</title><style>
 :root {
-  --purple: #8A2BE2;
-  --black: #111;
-  --white: #fff;
+    --primary: #8A2BE2;
+    --dark: #121212;
+    --light: #ffffff;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--black);
-  color: var(--white);
-  position: relative;
+    background-color: var(--dark);
+    color: var(--light);
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+.navbar {
+    background-color: rgba(0,0,0,0.9);
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
-.header {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 30px;
-  margin-bottom: 50px;
-  animation: fadeIn 1s ease-in;
-  position: relative;
+.logo {
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 
-.home-button {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: var(--purple);
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(138,43,226,0.4);
+.logo svg {
+    margin-right: 10px;
 }
 
-.home-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(138,43,226,0.6);
+.hero {
+    height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
 }
 
-.home-button svg {
-  width: 30px;
-  height: 30px;
-  fill: var(--white);
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+    margin-top: 2rem;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+.category-card {
+    background: rgba(138, 43, 226, 0.1);
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
 }
 
-.cover {
-  position: relative;
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(138,43,226,0.4);
-  transition: transform 0.3s;
+.category-card:hover {
+    transform: translateY(-5px);
+    background: rgba(138, 43, 226, 0.2);
 }
 
-.cover:hover {
-  transform: scale(1.05);
+.trending {
+    padding: 2rem;
 }
 
-.cover img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+.trending-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
-.info {
-  padding: 30px;
-  background: rgba(20,20,20,0.9);
-  border-radius: 20px;
-  border: 2px solid var(--purple);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+.movie-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-.info h1 {
-  font-size: 3.5em;
-  margin-bottom: 20px;
-  color: var(--purple);
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+.movie-card:hover {
+    transform: scale(1.05);
 }
 
-.episodes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 30px;
-  padding: 20px;
+.movie-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
 }
 
-.episode {
-  background: rgba(20,20,20,0.9);
-  padding: 30px;
-  border-radius: 20px;
-  border: 2px solid var(--purple);
-  transition: all 0.3s;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+.movie-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.8);
+    padding: 1rem;
 }
 
-.episode:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(138,43,226,0.4);
+.btn {
+    background-color: var(--primary);
+    color: var(--light);
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.episode h3 {
-  color: var(--purple);
-  margin-bottom: 20px;
-  font-size: 2em;
-  text-align: center;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+    z-index: -1;
 }
 
-iframe {
-  width: 100%;
-  height: 350px;
-  border-radius: 15px;
-  border: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+.btn:hover {
+    background-color: #6B1FB1;
 }
 
-.episode:hover iframe {
-  box-shadow: 0 8px 25px rgba(138,43,226,0.3);
+.btn:hover::before {
+    left: 100%;
 }
 
-.ad-container {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 160px;
-  height: 300px;
-  z-index: 100;
+footer {
+    background-color: rgba(0,0,0,0.9);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
 }
 
-.ad-left {
-  left: 10px;
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
-.ad-right {
-  right: 10px;
+.pulse {
+    animation: pulse 2s infinite;
 }
 
-@media (max-width: 1600px) {
-  .ad-container {
+.search-container {
+    padding: 1rem;
+    margin-top: 60px;
+    background: rgba(0,0,0,0.8);
+}
+
+.search-box {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.search-input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 2px solid var(--primary);
+    border-radius: 5px 0 0 5px;
+    background: rgba(255,255,255,0.1);
+    color: var(--light);
+}
+
+.search-btn {
+    background: var(--primary);
+    color: var(--light);
+    border: none;
+    padding: 0 1.5rem;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.95);
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    max-height: 300px;
+    overflow-y: auto;
     display: none;
-  }
+    z-index: 1000;
+}
+
+.search-result-item {
+    padding: 0.8rem;
+    border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-result-item:hover {
+    background: rgba(138, 43, 226, 0.2);
+}
+
+.search-result-item img {
+    width: 50px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
 @media (max-width: 768px) {
-  .header {
-    grid-template-columns: 1fr;
-    padding: 15px;
-  }
-  
-  .cover {
-    max-width: 280px;
-    margin: 0 auto;
-  }
-  
-  .info {
-    padding: 20px;
-  }
-  
-  .info h1 {
-    font-size: 2.5em;
-  }
-  
-  .episodes {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .episode {
-    padding: 20px;
-  }
-  
-  iframe {
-    height: 250px;
-  }
-  
-  .home-button {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .home-button svg {
-    width: 25px;
-    height: 25px;
-  }
+    .hero h1 {
+        font-size: 2rem !important;
+    }
+    
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .trending-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
-</style>
-</head>
-<body>
 
-<div class="ad-container ad-left">
-  <script type="text/javascript">
-    atOptions = {
-      'key' : '2d8bd2614f7cc9cc4316cc0829a3e263',
-      'format' : 'iframe',
-      'height' : 300,
-      'width' : 160,
-      'params' : {}
-    };
-  </script>
-  <script type="text/javascript" src="//www.highperformanceformat.com/2d8bd2614f7cc9cc4316cc0829a3e263/invoke.js"></script>
-</div>
-
-<div class="ad-container ad-right">
-  <script type="text/javascript">
-    atOptions = {
-      'key' : '2d8bd2614f7cc9cc4316cc0829a3e263',
-      'format' : 'iframe',
-      'height' : 300,
-      'width' : 160,
-      'params' : {}
-    };
-  </script>
-  <script type="text/javascript" src="//www.highperformanceformat.com/2d8bd2614f7cc9cc4316cc0829a3e263/invoke.js"></script>
-</div>
-
-<a href="https://quarkl-tv.vercel.app" class="home-button">
-  <svg viewBox="0 0 24 24">
-    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-  </svg>
-</a>
-
-<div class="container">
-  <div class="header">
-    <div class="cover">
-      <img src="https://www3.animeflv.net/uploads/animes/covers/3928.jpg" alt="Solo Leveling Cover Art" width="300" height="450">
-    </div>
+@media (max-width: 480px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
     
-    <div class="info">
-      <h1>Solo Leveling</h1>
-      <p>La humanidad quedó atrapada en un precipicio hace una década cuando las primeras puertas (portales conectados con otras dimensiones que albergan monstruos inmunes al armamento convencional) surgieron en todo el mundo. Además de la aparición de las puertas, varios humanos se transformaron en cazadores y se les otorgaron habilidades sobrehumanas. Responsables de entrar por las puertas y limpiar las mazmorras internas, muchos cazadores optaron por formar gremios para asegurar su sustento.</p>
-    </div>
-  </div>
+    .trending-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
-  <div class="episodes">
-    <div class="episode">
-      <h3>Episode 1</h3>
-      <iframe src="https://drive.google.com/file/d/17AoEp-_dTBIPU4v-CEbGjOhVlAIxq9zP/preview" allow="autoplay"></iframe>
-    </div>
+.featured-section {
+    padding: 2rem;
+    background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.featured-card {
+    background: rgba(138, 43, 226, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.featured-card:hover {
+    transform: translateY(-10px);
+}
+
+.featured-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.featured-content {
+    padding: 1rem;
+}
+
+.rating {
+    color: gold;
+    margin-top: 0.5rem;
+}
+
+.hashtags {
+    color: var(--primary);
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+.admin-trigger {
+    cursor: pointer;
+}
+
+.admin-panel {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 2000;
+}
+
+.admin-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--dark);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 2px solid var(--primary);
+    min-width: 300px;
+}
+
+.close-admin {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: none;
+    border: none;
+    color: var(--light);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.admin-login input {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--primary);
+    color: var(--light);
+    border-radius: 5px;
+}
+
+.admin-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.admin-actions button {
+    padding: 0.5rem;
+    background: var(--primary);
+    color: var(--light);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ad-container {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(138, 43, 226, 0.05);
+    border: 1px solid rgba(138, 43, 226, 0.2);
+}
+
+.ad-container iframe {
+    max-width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+</style></head><body>
+    <nav class="navbar">
+        <a href="https://quarkltv.com" class="logo">
+            <svg width="30" height="30" viewBox="0 0 100 100" class="admin-trigger">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#8A2BE2" stroke-width="8"/>
+                <path d="M30 50 L70 50 M50 30 L50 70" stroke="#8A2BE2" stroke-width="8" class="plus-symbol"/>
+            </svg>
+            QuarkLTV
+        </a>
+    </nav>
     
-    <div class="episode">
-      <h3>Episode 2</h3>
-      <iframe src="https://drive.google.com/file/d/178pC_RvP-oMYl1ljhalfBwELtXfDvCNB/preview" allow="autoplay"></iframe>
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-content">
+            <button class="close-admin">&times;</button>
+            <h2>Panel de Administración</h2>
+            <div class="admin-login" id="adminLogin">
+                <input type="password" id="adminPassword" placeholder="Ingrese la clave">
+                <button onclick="validateAdmin()">Ingresar</button>
+            </div>
+            <div class="admin-controls" id="adminControls" style="display:none;">
+                <h3>Gestión de Contenido</h3>
+                <div class="admin-actions">
+                    <button onclick="showUploadForm()">Subir Nuevo Contenido</button>
+                    <button onclick="showEditContent()">Editar Contenido</button>
+                    <button onclick="showDeleteContent()">Eliminar Contenido</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="episode">
-      <h3>Episode 3</h3>
-      <iframe src="https://drive.google.com/file/d/17SU9ha0MnuO8FM3_qfWyA4V5scskIqFm/preview" allow="autoplay"></iframe>
+    <div class="search-container">
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Buscar películas, series, anime...">
+            <button class="search-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+            </button>
+            <div class="search-results"></div>
+        </div>
     </div>
 
-    <div class="episode">
-      <h3>Episode 4</h3>
-      <iframe src="https://drive.google.com/file/d/1700wor83-pTuyWAopI7TWiUQabPO28Ad/preview" allow="autoplay"></iframe>
-    </div>
+    <section class="hero">
+        <div>
+            <h1 style="font-size: 3rem; margin-bottom: 1rem;">Bienvenido a QuarkLTV</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Tu nueva plataforma de streaming favorita</p>
+            <button class="btn pulse">Comenzar a ver</button>
+        </div>
+    </section>
 
-    <div class="episode">
-      <h3>Episode 5</h3>
-      <iframe src="https://drive.google.com/file/d/17Z3_WTSn6wlCWnQqczBWhT0CVL9YHAuz/preview" allow="autoplay"></iframe>
-    </div>
+    <section class="category-grid">
+        <div class="category-card">
+            <h3>Películas</h3>
+            <p>Las mejores películas de todos los géneros</p>
+        </div>
+        <div class="category-card">
+            <h3>Anime</h3>
+            <p>Los mejores títulos de anime</p>
+        </div>
+        <div class="category-card">
+            <h3>Series</h3>
+            <p>Series exclusivas y populares</p>
+        </div>
+        <div class="category-card">
+            <h3>Documentales</h3>
+            <p>Explora el mundo real</p>
+        </div>
+    </section>
 
-    <div class="episode">
-      <h3>Episode 6</h3>
-      <iframe src="https://drive.google.com/file/d/1H8hl1LRAIEFpy5IEURZNhunszIerBJmM/preview" allow="autoplay"></iframe>
-    </div>
+    <section class="featured-section">
+        <h2>Destacados de la Semana</h2>
+        <div class="featured-grid">
+            <div class="featured-card">
+                <img alt="Solo Leveling - Portada de anime de acción y fantasía" src="https://www3.animeflv.net/uploads/animes/covers/3928.jpg" width="250" height="200">
+                <div class="featured-content">
+                    <h3>Solo Leveling</h3>
+                    <p class="hashtags">#anime #manwha</p>
+                    <p>Serie anime • 2024</p>
+                    <div class="rating">★★★★★</div>
+                </div>
+            </div>
+            <div class="featured-card">
+                <img alt="Love is Hard for Otaku - Portada de anime romántico" src="https://www3.animeflv.net/uploads/animes/covers/2952.jpg" width="250" height="200">
+                <div class="featured-content">
+                    <h3>Love is Hard for Otaku</h3>
+                    <p class="hashtags">#anime</p>
+                    <p>Serie anime • 2023</p>
+                    <div class="rating">★★★★☆</div>
+                </div>
+            </div>
+            <div class="featured-card">
+                <img alt="Hasta el último Hombre - Poster de película bélica" src="https://www.lahiguera.net/cinemania/pelicula/7020/hasta_el_ultimo_hombre-cartel-7198.jpg" width="250" height="200">
+                <div class="featured-content">
+                    <h3>Hasta el último Hombre</h3>
+                    <p class="hashtags">#guerra #soldado</p>
+                    <p>Guerra y Acción • 2016</p>
+                    <div class="rating">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="episode">
-      <h3>Episode 7</h3>
-      <iframe src="https://drive.google.com/file/d/1AjFTyGE1j12YrlP0B9HozZHi2PvTGccS/preview" allow="autoplay"></iframe>
-    </div>
+    <section class="trending">
+        <h2>Tendencias</h2>
+        <div class="trending-grid">
+            <div class="movie-card">
+                <img alt="poster de película de acción, tonos oscuros y dramáticos" src="https://images.unsplash.com/photo-1535016120720-40c646be5580?auto=format&fit=crop&w=400&h=600" width="200" height="300">
+                <div class="movie-info">
+                    <h3>Título 1</h3>
+                    <p>Acción • 2023</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <img alt="poster de anime, colores vibrantes y estilo japonés" src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=400&h=600" width="200" height="300">
+                <div class="movie-info">
+                    <h3>Título 2</h3>
+                    <p>Anime • 2023</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <img alt="poster de serie dramática, tonos suaves y atmosféricos" src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=400&h=600" width="200" height="300">
+                <div class="movie-info">
+                    <h3>Título 3</h3>
+                    <p>Serie • 2023</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <img alt="poster de documental, fotografía naturalista" src="https://images.unsplash.com/photo-1552083375-1447ce886485?auto=format&fit=crop&w=400&h=600" width="200" height="300">
+                <div class="movie-info">
+                    <h3>Título 4</h3>
+                    <p>Documental • 2023</p>
+                </div>
+            </div>
+            <div class="movie-card ad-container">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '2d8bd2614f7cc9cc4316cc0829a3e263',
+                        'format' : 'iframe',
+                        'height' : 300,
+                        'width' : 160,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/2d8bd2614f7cc9cc4316cc0829a3e263/invoke.js"></script>
+            </div>
+        </div>
+    </section>
 
-    <div class="episode">
-      <h3>Episode 8</h3>
-      <iframe src="https://drive.google.com/file/d/1AlSUNwvPGo6mqWJsCk8CccwsR6eqotil/preview" allow="autoplay"></iframe>
-    </div>
+    <footer>
+        <p>© 2023 QuarkLTV - Desarrollado por QCStudios</p>
+        <p>Todos los derechos reservados</p>
+    </footer>
 
-    <div class="episode">
-      <h3>Episode 9</h3>
-      <iframe src="https://drive.google.com/file/d/1BnA14ZtoWo6TMOz16fXuCbvftl1OFFMq/preview" allow="autoplay"></iframe>
-    </div>
+    <script>
+        document.querySelector('.btn').addEventListener('click', () => {
+            alert('¡Bienvenido a QuarkLTV!');
+        });
 
-    <div class="episode">
-      <h3>Episode 10</h3>
-      <iframe src="https://drive.google.com/file/d/1AkH8ot3n2KIWnT1cj5hA7m_DoLc_UuyQ/preview" allow="autoplay"></iframe>
-    </div>
+        document.querySelectorAll('.movie-card').forEach(card => {
+            card.addEventListener('mouseover', () => {
+                card.style.cursor = 'pointer';
+            });
+            card.addEventListener('click', () => {
+                const title = card.querySelector('h3').textContent;
+                alert(`Has seleccionado: ${title}`);
+            });
+        });
 
-    <div class="episode">
-      <h3>Episode 11</h3>
-      <iframe src="https://drive.google.com/file/d/1BjOEHrqnO99hW1TIghy_yLQllR9ikNAb/preview" allow="autoplay"></iframe>
-    </div>
+        document.addEventListener('DOMContentLoaded', () => {
+            const smoothScroll = (target) => {
+                const element = document.querySelector(target);
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            };
+        });
 
-    <div class="episode">
-      <h3>Episode 12</h3>
-      <iframe src="https://drive.google.com/file/d/1BpeMUsnBOJDVpI336H1hJu1OS946K2IT/preview" allow="autoplay"></iframe>
-    </div>
-  </div>
-</div>
+        const movieDatabase = [
+            {
+                title: "Solo Leveling",
+                category: "Anime",
+                tags: ["anime", "manwha"],
+                image: "https://www3.animeflv.net/uploads/animes/covers/3928.jpg",
+                url: "https://solo-leveling-sandy.vercel.app"
+            },
+            {
+                title: "Love is Hard for Otaku",
+                category: "Anime",
+                tags: ["anime", "romance"],
+                image: "https://www3.animeflv.net/uploads/animes/covers/2952.jpg",
+                url: "https://love-is-hard-for-otaku.vercel.app"
+            },
+            {
+                title: "Hasta el último Hombre",
+                category: "Guerra y Acción",
+                tags: ["guerra", "soldado", "accion"],
+                image: "https://www.lahiguera.net/cinemania/pelicula/7020/hasta_el_ultimo_hombre-cartel-7198.jpg",
+                url: "https://hasta-el-ultimo-hombre.vercel.app"
+            }
+        ];
 
-<script>
-window.addEventListener('load', () => {
-    document.body.style.opacity = '1';
-});
-</script>
+        const searchInput = document.querySelector('.search-input');
+        const searchResults = document.querySelector('.search-results');
 
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            if (searchTerm.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const filteredMovies = movieDatabase.filter(movie => {
+                return movie.title.toLowerCase().includes(searchTerm) ||
+                       movie.category.toLowerCase().includes(searchTerm) ||
+                       movie.tags.some(tag => tag.includes(searchTerm));
+            });
+
+            if (filteredMovies.length > 0) {
+                searchResults.innerHTML = filteredMovies.map(movie => `
+                    <div class="search-result-item" onclick="window.location.href='${movie.url}'">
+                        <img src="${movie.image}" alt="${movie.title}">
+                        <div>
+                            <h4>${movie.title}</h4>
+                            <small>${movie.category}</small>
+                        </div>
+                    </div>
+                `).join('');
+                searchResults.style.display = 'block';
+            } else {
+                searchResults.innerHTML = '<div class="search-result-item">No se encontraron resultados</div>';
+                searchResults.style.display = 'block';
+            }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-box')) {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('img');
+            const imageOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px 100px 0px'
+            };
+
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.src;
+                        observer.unobserve(img);
+                    }
+                });
+            }, imageOptions);
+
+            images.forEach(img => imageObserver.observe(img));
+        });
+
+        document.querySelectorAll('.featured-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const title = card.querySelector('h3').textContent;
+                switch(title) {
+                    case 'Solo Leveling':
+                        window.location.href = 'https://solo-leveling-sandy.vercel.app';
+                        break;
+                    case 'Love is Hard for Otaku':
+                        window.location.href = 'https://love-is-hard-for-otaku.vercel.app';
+                        break;
+                    case 'Hasta el último Hombre':
+                        window.location.href = 'https://hasta-el-ultimo-hombre.vercel.app';
+                        break;
+                }
+            });
+        });
+
+        const adminPanel = document.getElementById('adminPanel');
+        const adminTrigger = document.querySelector('.admin-trigger');
+        const closeAdmin = document.querySelector('.close-admin');
+        const ADMIN_PASSWORD = '198272992';
+
+        adminTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            adminPanel.style.display = 'block';
+        });
+
+        closeAdmin.addEventListener('click', () => {
+            adminPanel.style.display = 'none';
+        });
+
+        function validateAdmin() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('adminLogin').style.display = 'none';
+                document.getElementById('adminControls').style.display = 'block';
+            } else {
+                alert('Clave incorrecta');
+            }
+        }
+
+        function showUploadForm() {
+            alert('Función de subida en desarrollo');
+        }
+
+        function showEditContent() {
+            alert('Función de edición en desarrollo');
+        }
+
+        function showDeleteContent() {
+            alert('Función de eliminación en desarrollo');
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === adminPanel) {
+                adminPanel.style.display = 'none';
+            }
+        });
+    </script>
 </body></html>
